@@ -17,7 +17,7 @@ RUN ln -s /bin/true /sbin/initctl
 RUN apt-get install -y salt-minion 
 
 ADD ./supervisor-salt.conf /etc/supervisor/conf.d/
-
-RUN echo 'master: salt-master.local' > /etc/salt/minion
+ADD ./start-salt-minion /usr/bin/start-salt-minion 
+RUN chmod +x /usr/bin/start-salt-minion
 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]  

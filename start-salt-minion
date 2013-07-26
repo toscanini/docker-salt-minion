@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sed -i 's/#master:/master:/g' /etc/salt/minion
+sed -i "s/master:.*$/master: $SALT_MASTER/g" /etc/salt/minion
+
+/usr/bin/salt-minion
